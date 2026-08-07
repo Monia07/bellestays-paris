@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BelleStays Paris</title>
+  </head>
+  <body>
+    <h1>BelleStays Paris</h1>
+
+    <h2>Available Properties</h2>
+
+    {% if listings %}
+    <ul>
+      {% for listing in listings %}
+      <li>
+        <strong>{{ listing.title }}</strong><br />
+        {{ listing.district }}<br />
+        €{{ listing.price_per_night }} per night
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No properties available yet.</p>
+    {% endif %}
+  </body>
+</html>
