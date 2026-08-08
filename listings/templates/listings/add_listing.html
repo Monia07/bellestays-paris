@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add Listing</title>
+  </head>
+  <body>
+    <h1>Add a New Property</h1>
+
+    <form method="POST">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Save Property</button>
+    </form>
+
+    <p><a href="/">Back to Home</a></p>
+  </body>
+</html>
