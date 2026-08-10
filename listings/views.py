@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+
 from .models import Listing
 from .forms import ListingForm
 
@@ -6,9 +7,25 @@ from .forms import ListingForm
 def listing_list(request):
     listings = Listing.objects.all()
 
-    return render(request, "listings/listing_list.html", {
-        "listings": listings
-    })
+    return render(
+        request,
+        "listings/listing_list.html",
+        {
+            "listings": listings,
+        },
+    )
+
+
+def listing_detail(request, pk):
+    listing = get_object_or_404(Listing, pk=pk)
+
+    return render(
+        request,
+        "listings/listing_detail.html",
+        {
+            "listing": listing,
+        },
+    )
 
 
 def add_listing(request):
@@ -22,6 +39,10 @@ def add_listing(request):
     else:
         form = ListingForm()
 
-    return render(request, "listings/add_listing.html", {
-        "form": form
-    })
+    return render(
+        request,
+        "listings/add_listing.html",
+        {
+            "form": form,
+        },
+    )
