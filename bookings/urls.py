@@ -12,4 +12,9 @@ urlpatterns = [
         views.booking_success,
         name="booking_success",
     ),
+    path(
+        "",
+        views.booking_list,
+        name="booking_list",
+    ),
 ]

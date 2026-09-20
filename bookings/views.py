@@ -36,3 +36,15 @@ def booking_success(request):
         request,
         "bookings/booking_success.html",
     )
+
+
+def booking_list(request):
+    bookings = Booking.objects.all().order_by("-created_at")
+
+    return render(
+        request,
+        "bookings/booking_list.html",
+        {
+            "bookings": bookings,
+        },
+    )

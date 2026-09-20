@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+Bookings
+{% endblock %}
+
+{% block content %}
+
+<h1 class="mb-4">All Bookings</h1>
+
+{% if bookings %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Guest</th>
+            <th>Property</th>
+            <th>Check in</th>
+            <th>Check out</th>
+            <th>Guests</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for booking in bookings %}
+        <tr>
+            <td>{{ booking.guest_name }}</td>
+            <td>{{ booking.listing.title }}</td>
+            <td>{{ booking.check_in }}</td>
+            <td>{{ booking.check_out }}</td>
+            <td>{{ booking.guests }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+
+<p>No bookings found.</p>
+
+{% endif %}
+
+{% endblock %}
