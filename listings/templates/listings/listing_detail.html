@@ -34,9 +34,15 @@ Paris {% endblock %} {% block content %}
       <small class="text-muted fs-5">/ night</small>
     </h2>
 
-    <a href="/" class="btn btn-outline-secondary"> ← Back to listings </a>
+    <div class="d-flex gap-2">
+      <a href="{% url 'listing_list' %}" class="btn btn-outline-secondary">
+        ← Back to Listings
+      </a>
 
-    <a href="#" class="btn btn-primary"> Book Now </a>
+      <a href="{% url 'create_booking' listing.id %}" class="btn btn-primary">
+        Book Now
+      </a>
+    </div>
   </div>
 </div>
 
