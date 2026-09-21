@@ -48,3 +48,19 @@ def booking_list(request):
             "bookings": bookings,
         },
     )
+
+
+def delete_booking(request, booking_id):
+    booking = get_object_or_404(Booking, pk=booking_id)
+
+    if request.method == "POST":
+        booking.delete()
+        return redirect("booking_list")
+
+    return render(
+        request,
+        "bookings/delete_booking.html",
+        {
+            "booking": booking,
+        },
+    )

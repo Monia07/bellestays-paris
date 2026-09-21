@@ -1,40 +1,75 @@
 {% extends "base.html" %}
 
 {% block title %}
-Bookings
+My Bookings
 {% endblock %}
 
 {% block content %}
 
-<h1 class="mb-4">All Bookings</h1>
+<div class="container mt-5">
 
-{% if bookings %}
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Guest</th>
-            <th>Property</th>
-            <th>Check in</th>
-            <th>Check out</th>
-            <th>Guests</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for booking in bookings %}
-        <tr>
-            <td>{{ booking.guest_name }}</td>
-            <td>{{ booking.listing.title }}</td>
-            <td>{{ booking.check_in }}</td>
-            <td>{{ booking.check_out }}</td>
-            <td>{{ booking.guests }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% else %}
+    <h1 class="mb-4">My Bookings</h1>
 
-<p>No bookings found.</p>
+    {% if bookings %}
 
-{% endif %}
+    <div class="table-responsive">
+
+        <table class="table table-striped align-middle">
+
+            <thead>
+
+                <tr>
+                    <th>Property</th>
+                    <th>Guest</th>
+                    <th>Check In</th>
+                    <th>Check Out</th>
+                    <th>Guests</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for booking in bookings %}
+
+                <tr>
+
+                    <td>{{ booking.listing.title }}</td>
+
+                    <td>{{ booking.guest_name }}</td>
+
+                    <td>{{ booking.check_in }}</td>
+
+                    <td>{{ booking.check_out }}</td>
+
+                    <td>{{ booking.guests }}</td>
+
+                    <td>
+                        <a href="{% url 'delete_booking' booking.id %}"
+                           class="btn btn-danger btn-sm">
+                            Delete
+                        </a>
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {% else %}
+
+    <div class="alert alert-info">
+        No bookings found.
+    </div>
+
+    {% endif %}
+
+</div>
 
 {% endblock %}
