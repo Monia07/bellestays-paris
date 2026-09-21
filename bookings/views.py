@@ -10,6 +10,7 @@ def create_booking(request, listing_id):
 
     if request.method == "POST":
         form = BookingForm(request.POST)
+        form.listing = listing
 
         if form.is_valid():
             booking = form.save(commit=False)
@@ -20,6 +21,7 @@ def create_booking(request, listing_id):
 
     else:
         form = BookingForm()
+        form.listing = listing
 
     return render(
         request,

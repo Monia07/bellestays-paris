@@ -46,3 +46,29 @@ class BookingForm(forms.ModelForm):
                 }
             ),
         }
+
+    def clean(self):
+        cleaned_data = super().clean()
+
+        check_in = cleaned_data.get("check_in")
+        check_out = cleaned_data.get("check_out")
+
+        if check_in and check_out:
+
+            if check_out <= check_in:
+                raise forms.ValidationError(
+                    "Check-out date must be after check-in date."
+                )
+
+            overlapping_booking = Booking.objects.filter(
+                listing=self.listing,
+                check_in__lt=check_out,
+                check_out__gt=check_in,
+            ).exists()
+
+            if overlapping_booking:
+                raise forms.ValidationError(
+                    "These dates are already booked. Please choose different dates."
+                )
+
+        return cleaned_data
