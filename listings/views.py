@@ -31,6 +31,21 @@ def listing_detail(request, pk):
 
 
 @login_required
+def my_listings(request):
+    listings = Listing.objects.filter(
+        host=request.user
+    ).order_by("-created_on")
+
+    return render(
+        request,
+        "listings/my_listings.html",
+        {
+            "listings": listings,
+        },
+    )
+
+
+@login_required
 def add_listing(request):
     if request.method == "POST":
         form = ListingForm(request.POST)
@@ -40,7 +55,7 @@ def add_listing(request):
             listing.host = request.user
             listing.save()
 
-            return redirect("listing_list")
+            return redirect("my_listings")
 
     else:
         form = ListingForm()
@@ -50,6 +65,60 @@ def add_listing(request):
         "listings/add_listing.html",
         {
             "form": form,
+        },
+    )
+
+
+@login_required
+def edit_listing(request, pk):
+    listing = get_object_or_404(
+        Listing,
+        pk=pk,
+        host=request.user,
+    )
+
+    if request.method == "POST":
+        form = ListingForm(
+            request.POST,
+            instance=listing,
+        )
+
+        if form.is_valid():
+            updated_listing = form.save(commit=False)
+            updated_listing.host = request.user
+            updated_listing.save()
+
+            return redirect("my_listings")
+
+    else:
+        form = ListingForm(instance=listing)
+
+    return render(
+        request,
+        "listings/add_listing.html",
+        {
+            "form": form,
+        },
+    )
+
+
+@login_required
+def delete_listing(request, pk):
+    listing = get_object_or_404(
+        Listing,
+        pk=pk,
+        host=request.user,
+    )
+
+    if request.method == "POST":
+        listing.delete()
+        return redirect("my_listings")
+
+    return render(
+        request,
+        "listings/delete_listing.html",
+        {
+            "listing": listing,
         },
     )
 
