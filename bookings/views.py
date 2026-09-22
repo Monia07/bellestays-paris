@@ -14,20 +14,24 @@ def create_booking(request, listing_id):
     )
 
     if request.method == "POST":
-        form = BookingForm(request.POST)
-        form.listing = listing
+        form = BookingForm(
+            request.POST,
+            listing=listing,
+        )
 
         if form.is_valid():
             booking = form.save(commit=False)
             booking.listing = listing
             booking.guest = request.user
+            booking.guest_email = request.user.email
             booking.save()
 
             return redirect("booking_success")
 
     else:
-        form = BookingForm()
-        form.listing = listing
+        form = BookingForm(
+            listing=listing,
+        )
 
     return render(
         request,

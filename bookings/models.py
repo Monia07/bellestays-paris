@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator
 
 from listings.models import Listing
 
@@ -29,6 +30,9 @@ class Booking(models.Model):
 
     guests = models.PositiveIntegerField(
         default=1,
+        validators=[
+            MinValueValidator(1),
+        ],
     )
 
     created_at = models.DateTimeField(

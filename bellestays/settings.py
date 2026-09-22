@@ -107,3 +107,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "listing_list"
 
 LOGOUT_REDIRECT_URL = "listing_list"
+
+# Stripe
+STRIPE_PUBLIC_KEY = os.environ.get(
+    "STRIPE_PUBLIC_KEY"
+)
+
+STRIPE_SECRET_KEY = os.environ.get(
+    "STRIPE_SECRET_KEY"
+)

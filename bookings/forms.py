@@ -5,6 +5,16 @@ from .models import Booking
 
 
 class BookingForm(forms.ModelForm):
+    guests = forms.TypedChoiceField(
+        label="Number of guests",
+        coerce=int,
+        widget=forms.Select(
+            attrs={
+                "class": "form-select",
+            }
+        ),
+    )
+
     class Meta:
         model = Booking
 
@@ -21,12 +31,6 @@ class BookingForm(forms.ModelForm):
                     "placeholder": "Your name",
                 }
             ),
-            "guest_email": forms.EmailInput(
-                attrs={
-                    "class": "form-control",
-                    "placeholder": "Email address",
-                }
-            ),
             "check_in": forms.DateInput(
                 attrs={
                     "class": "form-control",
@@ -39,13 +43,25 @@ class BookingForm(forms.ModelForm):
                     "type": "date",
                 }
             ),
-            "guests": forms.NumberInput(
-                attrs={
-                    "class": "form-control",
-                    "min": 1,
-                }
-            ),
         }
+
+    def __init__(self, *args, **kwargs):
+        self.listing = kwargs.pop("listing", None)
+        super().__init__(*args, **kwargs)
+
+        self.fields.pop("guest_email")
+
+        if self.listing:
+            self.fields["guests"].choices = [
+                (
+                    i,
+                    f"{i} guest" if i == 1 else f"{i} guests",
+                )
+                for i in range(
+                    1,
+                    self.listing.guests + 1,
+                )
+            ]
 
     def clean(self):
         cleaned_data = super().clean()
