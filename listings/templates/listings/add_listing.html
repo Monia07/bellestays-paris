@@ -1,24 +1,114 @@
-{% extends "base.html" %} {% block title %} Add Property | BelleStays Paris {%
-endblock %} {% block content %}
+{% extends "base.html" %}
+
+{% block title %}
+Add Property | BelleStays Paris
+{% endblock %}
+
+{% block content %}
 
 <div class="row justify-content-center">
-  <div class="col-lg-8">
-    <div class="card shadow-sm border-0">
-      <div class="card-body p-4">
-        <h2 class="mb-4">Add a New Property</h2>
 
-        <form method="POST">
-          {% csrf_token %} {{ form.as_p }}
+    <div class="col-lg-8">
 
-          <div class="mt-4">
-            <button type="submit" class="btn btn-primary">Save Property</button>
+        <div class="card shadow-sm border-0">
 
-            <a href="/" class="btn btn-outline-secondary ms-2"> Cancel </a>
-          </div>
-        </form>
-      </div>
+            <div class="card-body p-4">
+
+                <h2 class="mb-4">
+                    Add a New Property
+                </h2>
+
+                <form method="post">
+
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label class="form-label">Title</label>
+                        {{ form.title }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        {{ form.description }}
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">District</label>
+                            {{ form.district }}
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Address</label>
+                            {{ form.address }}
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Property Type</label>
+                        {{ form.property_type }}
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Price per night (€)</label>
+                            {{ form.price_per_night }}
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                            <label class="form-label">Guests</label>
+                            {{ form.guests }}
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                            <label class="form-label">Bedrooms</label>
+                            {{ form.bedrooms }}
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                            <label class="form-label">Bathrooms</label>
+                            {{ form.bathrooms }}
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Image URL</label>
+                        {{ form.image }}
+                    </div>
+
+                    <div class="form-check mb-4">
+                        {{ form.available }}
+                        <label class="form-check-label">
+                            Available
+                        </label>
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        Save Property
+                    </button>
+
+                    <a
+                        href="{% url 'listing_list' %}"
+                        class="btn btn-outline-secondary ms-2"
+                    >
+                        Cancel
+                    </a>
+
+                </form>
+
+            </div>
+
+        </div>
+
     </div>
-  </div>
+
 </div>
 
 {% endblock %}
