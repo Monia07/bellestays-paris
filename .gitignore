@@ -3,6 +3,7 @@
 
 # Environment variables
 .env
+env.py
 
 # Database
 db.sqlite3

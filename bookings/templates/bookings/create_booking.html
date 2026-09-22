@@ -7,22 +7,75 @@ Book Property
 {% block content %}
 
 <div class="row justify-content-center">
-  <div class="col-lg-8">
-    <div class="card shadow">
-      <div class="card-body">
-        <h2 class="mb-4">Book {{ listing.title }}</h2>
 
-        <form method="POST">
-          {% csrf_token %}
-          {{ form.as_p }}
+    <div class="col-lg-8">
 
-          <button type="submit" class="btn btn-primary">
-            Confirm Booking
-          </button>
-        </form>
-      </div>
+        <div class="card shadow">
+
+            <div class="card-body">
+
+                <h2 class="mb-4">
+                    Book {{ listing.title }}
+                </h2>
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        Confirm Booking
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
     </div>
-  </div>
+
 </div>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+
+    const checkIn = document.getElementById("id_check_in");
+    const checkOut = document.getElementById("id_check_out");
+
+    // Get today's date in YYYY-MM-DD format
+    const today = new Date();
+    const todayString = today.toLocaleDateString("en-IE");
+
+    // Disable past dates
+    checkIn.min = todayString;
+    checkOut.min = todayString;
+
+    checkIn.addEventListener("change", function () {
+
+        const selectedDate = new Date(
+            checkIn.value + "T00:00:00"
+        );
+
+        // Check-out must be at least one day later
+        selectedDate.setDate(
+            selectedDate.getDate() + 1
+        );
+
+        const nextDay = selectedDate.toLocaleDateString("en-IE");
+
+        checkOut.min = nextDay;
+        checkOut.value = nextDay;
+
+    });
+
+</script>
 
 {% endblock %}

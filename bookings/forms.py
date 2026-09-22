@@ -1,4 +1,6 @@
 from django import forms
+from django.utils import timezone
+
 from .models import Booking
 
 
@@ -51,6 +53,11 @@ class BookingForm(forms.ModelForm):
         check_in = cleaned_data.get("check_in")
         check_out = cleaned_data.get("check_out")
 
+        if check_in and check_in < timezone.localdate():
+            raise forms.ValidationError(
+                "Check-in date cannot be in the past."
+            )
+
         if check_in and check_out:
 
             if check_out <= check_in:
@@ -66,7 +73,8 @@ class BookingForm(forms.ModelForm):
 
             if overlapping_booking:
                 raise forms.ValidationError(
-                    "These dates are already booked. Please choose different dates."
+                    "These dates are already booked. "
+                    "Please choose different dates."
                 )
 
         return cleaned_data
