@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 from listings.models import Listing
 
 
@@ -6,10 +8,18 @@ class Booking(models.Model):
     listing = models.ForeignKey(
         Listing,
         on_delete=models.CASCADE,
-        related_name="bookings"
+        related_name="bookings",
     )
 
-    guest_name = models.CharField(max_length=100)
+    guest = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="bookings",
+    )
+
+    guest_name = models.CharField(
+        max_length=100,
+    )
 
     guest_email = models.EmailField()
 
@@ -17,9 +27,15 @@ class Booking(models.Model):
 
     check_out = models.DateField()
 
-    guests = models.PositiveIntegerField(default=1)
+    guests = models.PositiveIntegerField(
+        default=1,
+    )
 
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+    )
 
     def __str__(self):
-        return f"{self.guest_name} - {self.listing.title}"
+        return (
+            f"{self.guest_name} - {self.listing.title}"
+        )

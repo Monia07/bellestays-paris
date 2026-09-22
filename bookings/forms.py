@@ -6,12 +6,10 @@ class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
 
-        fields = [
-            "guest_name",
-            "guest_email",
-            "check_in",
-            "check_out",
-            "guests",
+        exclude = [
+            "listing",
+            "guest",
+            "created_at",
         ]
 
         widgets = {
