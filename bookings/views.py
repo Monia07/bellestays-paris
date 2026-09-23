@@ -192,3 +192,4 @@ def delete_booking(request, booking_id):
             "booking": booking,
         },
     )
+

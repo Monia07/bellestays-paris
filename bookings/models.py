@@ -67,3 +67,4 @@ class Booking(models.Model):
         return (
             f"{self.guest_name} - {self.listing.title}"
         )
+    
