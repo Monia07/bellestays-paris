@@ -761,35 +761,63 @@ Both manual testing and validation tools were used.
 
 ## Validation Testing
 
-### HTML
+### HTML Validation
 
-All HTML templates were validated using the **W3C Markup Validation Service**.
+The application's HTML was validated using the W3C Markup Validation Service.
 
-No significant validation errors remain.
+All core pages passed validation after accessibility improvements to the heading hierarchy.
+
+#### Home Page
+
+![Home Validation](documentation/validation/html-validation-home.png)
+
+#### Property Details
+
+![Property Details Validation](documentation/validation/html-validation-property-detail.png)
+
+#### Login
+
+![Login Validation](documentation/validation/html-validation-login.png)
+
+#### Register
+
+![Register Validation](documentation/validation/html-validation-register.png)
+
+#### Booking Form
+
+![Booking Form Validation](documentation/validation/html-validation-booking-form.png)
+
+#### My Bookings
+
+![My Bookings Validation](documentation/validation/html-validation-my-bookings.png)
 
 ---
 
-### CSS
+### CSS Validation
 
-CSS styling was validated using the **W3C CSS Validation Service (Jigsaw)**.
+The project does not include a custom CSS stylesheet.
 
-No significant validation errors remain.
+Styling is provided primarily through Bootstrap 5 utility classes and the Bootstrap responsive grid system.
 
----
-
-### JavaScript
-
-The project's JavaScript was checked using **JSHint**.
-
-No significant issues affecting functionality remain.
+Therefore, no standalone CSS validation was required.
 
 ---
 
-### Python
+The custom JavaScript used for the booking form was validated using JSHint.
 
-Python files were checked against **PEP 8** guidelines.
+No warnings or errors remain after updating the script to follow ES6 standards and encapsulating the code within an immediately invoked function expression (IIFE).
 
-Code formatting, naming conventions and overall project structure follow Django best practices.
+![JavaScript Validation](documentation/validation/javascript-validation.png)
+
+---
+
+### Python Validation
+
+Python files were validated against the PEP 8 style guide.
+
+*Add your Python validation screenshot below.*
+
+![Python Validation](documentation/validation/python-validation.png)
 
 ---
 
