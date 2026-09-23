@@ -31,8 +31,32 @@ class Booking(models.Model):
     guests = models.PositiveIntegerField(
         default=1,
         validators=[
-            MinValueValidator(1),
+            MinValueValidator(
+                1,
+                message="At least one guest is required.",
+            ),
         ],
+    )
+
+    price_per_night = models.DecimalField(
+        max_digits=8,
+        decimal_places=2,
+        default=0,
+    )
+
+    total_price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        default=0,
+    )
+
+    paid = models.BooleanField(
+        default=False,
+    )
+
+    stripe_session_id = models.CharField(
+        max_length=255,
+        blank=True,
     )
 
     created_at = models.DateTimeField(

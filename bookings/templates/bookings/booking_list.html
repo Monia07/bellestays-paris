@@ -36,11 +36,12 @@ My Bookings | BelleStays Paris
                     <tr>
 
                         <th>Property</th>
-                        <th>Guest</th>
                         <th>Check In</th>
                         <th>Check Out</th>
                         <th>Guests</th>
-                        <th></th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Action</th>
 
                     </tr>
 
@@ -61,15 +62,49 @@ My Bookings | BelleStays Paris
                             </a>
                         </td>
 
-                        <td>{{ booking.guest_name }}</td>
-
-                        <td>{{ booking.check_in }}</td>
-
-                        <td>{{ booking.check_out }}</td>
-
-                        <td>{{ booking.guests }}</td>
+                        <td>
+                            {{ booking.check_in }}
+                        </td>
 
                         <td>
+                            {{ booking.check_out }}
+                        </td>
+
+                        <td>
+                            {{ booking.guests }}
+                        </td>
+
+                        <td>
+                            €{{ booking.total_price }}
+                        </td>
+
+                        <td>
+
+                            {% if booking.paid %}
+
+                            <span class="badge bg-success">
+                                Paid
+                            </span>
+
+                            {% else %}
+
+                            <span class="badge bg-warning text-dark">
+                                Payment Pending
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            {% if booking.paid %}
+
+                            <span class="text-success fw-semibold">
+                                Completed
+                            </span>
+
+                            {% else %}
 
                             <a
                                 href="{% url 'delete_booking' booking.id %}"
@@ -77,6 +112,8 @@ My Bookings | BelleStays Paris
                             >
                                 Cancel Booking
                             </a>
+
+                            {% endif %}
 
                         </td>
 
@@ -98,7 +135,9 @@ My Bookings | BelleStays Paris
 
 <div class="alert alert-info">
 
-    <h4>No bookings yet</h4>
+    <h4>
+        No bookings yet
+    </h4>
 
     <p>
         You haven't made any bookings yet.

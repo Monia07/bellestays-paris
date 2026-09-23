@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+Payment Cancelled
+{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <div class="card shadow">
+
+            <div class="card-body text-center">
+
+                <h2 class="text-danger mb-4">
+                    Payment Cancelled
+                </h2>
+
+                <p class="lead">
+                    Your payment was cancelled.
+                </p>
+
+                <p>
+                    Your booking has been saved,
+                    but payment has not been completed.
+                </p>
+
+                <a
+                    href="{% url 'my_bookings' %}"
+                    class="btn btn-outline-primary"
+                >
+                    View My Bookings
+                </a>
+
+                <a
+                    href="{% url 'listing_list' %}"
+                    class="btn btn-primary"
+                >
+                    Continue Browsing
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

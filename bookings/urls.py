@@ -1,5 +1,7 @@
 from django.urls import path
+
 from . import views
+
 
 urlpatterns = [
     path(
@@ -12,6 +14,12 @@ urlpatterns = [
         "success/",
         views.booking_success,
         name="booking_success",
+    ),
+
+    path(
+        "cancel/",
+        views.booking_cancel,
+        name="booking_cancel",
     ),
 
     path(

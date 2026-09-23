@@ -6,16 +6,66 @@ Booking Confirmed
 
 {% block content %}
 
-<div class="text-center mt-5">
-    <h1 class="text-success">🎉 Booking Confirmed!</h1>
+<div class="row justify-content-center">
 
-    <p class="lead mt-3">
-        Thank you for your booking.
-    </p>
+    <div class="col-lg-8">
 
-    <a href="/" class="btn btn-primary mt-3">
-        Back to Home
-    </a>
+        <div class="card shadow">
+
+            <div class="card-body text-center">
+
+                <h2 class="text-success mb-4">
+                    ✅ Payment Successful!
+                </h2>
+
+                <p class="lead">
+                    Thank you for your booking.
+                </p>
+
+                {% if booking %}
+
+                <hr>
+
+                <p>
+                    <strong>Property:</strong><br>
+                    {{ booking.listing.title }}
+                </p>
+
+                <p>
+                    <strong>Check-in:</strong><br>
+                    {{ booking.check_in }}
+                </p>
+
+                <p>
+                    <strong>Check-out:</strong><br>
+                    {{ booking.check_out }}
+                </p>
+
+                <p>
+                    <strong>Guests:</strong><br>
+                    {{ booking.guests }}
+                </p>
+
+                <p>
+                    <strong>Total Paid:</strong><br>
+                    €{{ booking.total_price }}
+                </p>
+
+                {% endif %}
+
+                <a
+                    href="{% url 'my_bookings' %}"
+                    class="btn btn-primary mt-3"
+                >
+                    View My Bookings
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
 {% endblock %}

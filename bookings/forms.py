@@ -22,6 +22,10 @@ class BookingForm(forms.ModelForm):
             "listing",
             "guest",
             "created_at",
+            "price_per_night",
+            "total_price",
+            "paid",
+            "stripe_session_id",
         ]
 
         widgets = {
