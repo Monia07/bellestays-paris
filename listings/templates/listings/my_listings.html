@@ -6,9 +6,9 @@ My Listings | BelleStays Paris
 
 {% block content %}
 
-<div class="d-flex justify-content-between align-items-center mb-4">
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
 
-    <h2>
+    <h2 class="mb-0">
         My Listings
     </h2>
 
@@ -27,54 +27,67 @@ My Listings | BelleStays Paris
 
     {% for listing in listings %}
 
-    <div class="col-md-6 col-lg-4">
+    <div class="col-12 col-md-6 col-lg-4">
 
-        <div class="card h-100 shadow-sm">
+        <div class="card h-100 shadow-sm border-0">
 
             <img
                 src="{{ listing.image }}"
                 class="card-img-top"
                 alt="{{ listing.title }}"
+                style="height: 240px; object-fit: cover;"
             >
 
-            <div class="card-body">
+            <div class="card-body d-flex flex-column">
 
-                <h5 class="card-title">
+                <h5 class="card-title fw-bold">
                     {{ listing.title }}
                 </h5>
 
-                <p class="text-muted">
-                    {{ listing.district }}
+                <p class="text-muted mb-2">
+                    📍 {{ listing.district }}
                 </p>
 
-                <p>
-                    <strong>€{{ listing.price_per_night }}</strong> / night
+                <p class="mt-auto mb-0">
+
+                    <strong class="text-primary">
+                        €{{ listing.price_per_night }}
+                    </strong>
+
+                    <span class="text-muted">
+                        / night
+                    </span>
+
                 </p>
 
             </div>
 
-            <div class="card-footer bg-white">
+            <div class="card-footer bg-white border-0">
 
-                <a
-                    href="{% url 'listing_detail' listing.pk %}"
-                    class="btn btn-outline-primary btn-sm"
-                >
-                    View
-                </a>
+                <div class="d-grid gap-2 d-md-flex justify-content-between">
 
-                <a
-                    href="{% url 'edit_listing' listing.pk %}"
-                    class="btn btn-outline-secondary btn-sm"
-                >
-                    Edit
-                </a>
+                    <a
+                        href="{% url 'listing_detail' listing.pk %}"
+                        class="btn btn-outline-primary btn-sm"
+                    >
+                        View
+                    </a>
 
-                <a
-                    href="{% url 'delete_listing' listing.pk %}"
-                    class="btn btn-outline-danger btn-sm"
-                >
-                    Delete
-                </a>
+                    <a
+                        href="{% url 'edit_listing' listing.pk %}"
+                        class="btn btn-outline-secondary btn-sm"
+                    >
+                        Edit
+                    </a>
+
+                    <a
+                        href="{% url 'delete_listing' listing.pk %}"
+                        class="btn btn-outline-danger btn-sm"
+                    >
+                        Delete
+                    </a>
+
+                </div>
 
             </div>
 
@@ -88,20 +101,26 @@ My Listings | BelleStays Paris
 
 {% else %}
 
-<div class="alert alert-info">
+<div class="card border-0 shadow-sm">
 
-    <h4>No properties yet</h4>
+    <div class="card-body text-center p-5">
 
-    <p>
-        You haven't added any properties yet.
-    </p>
+        <h4>
+            No properties yet
+        </h4>
 
-    <a
-        href="{% url 'add_listing' %}"
-        class="btn btn-primary"
-    >
-        Add your first property
-    </a>
+        <p class="text-muted">
+            You haven't added any properties yet.
+        </p>
+
+        <a
+            href="{% url 'add_listing' %}"
+            class="btn btn-primary"
+        >
+            Add your first property
+        </a>
+
+    </div>
 
 </div>
 

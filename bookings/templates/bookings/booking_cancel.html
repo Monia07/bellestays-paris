@@ -8,38 +8,42 @@ Payment Cancelled
 
 <div class="row justify-content-center">
 
-    <div class="col-lg-8">
+    <div class="col-12 col-md-8 col-lg-6">
 
-        <div class="card shadow">
+        <div class="card shadow border-0">
 
-            <div class="card-body text-center">
+            <div class="card-body text-center p-4">
 
                 <h2 class="text-danger mb-4">
-                    Payment Cancelled
+                    ❌ Payment Cancelled
                 </h2>
 
                 <p class="lead">
                     Your payment was cancelled.
                 </p>
 
-                <p>
-                    Your booking has been saved,
-                    but payment has not been completed.
+                <p class="text-muted">
+                    Your booking has been saved, but payment has not been completed.
+                    You can return to <strong>My Bookings</strong> to view your reservation.
                 </p>
 
-                <a
-                    href="{% url 'my_bookings' %}"
-                    class="btn btn-outline-primary"
-                >
-                    View My Bookings
-                </a>
+                <div class="d-grid gap-2 d-md-flex justify-content-center mt-4">
 
-                <a
-                    href="{% url 'listing_list' %}"
-                    class="btn btn-primary"
-                >
-                    Continue Browsing
-                </a>
+                    <a
+                        href="{% url 'my_bookings' %}"
+                        class="btn btn-outline-primary"
+                    >
+                        View My Bookings
+                    </a>
+
+                    <a
+                        href="{% url 'listing_list' %}"
+                        class="btn btn-primary"
+                    >
+                        Continue Browsing
+                    </a>
+
+                </div>
 
             </div>
 

@@ -5,7 +5,10 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>
         {% block title %}
@@ -32,90 +35,111 @@
     <div class="container">
 
         <a
-            class="navbar-brand fw-bold fs-3"
+            class="navbar-brand fw-bold"
             href="{% url 'listing_list' %}"
         >
             🏡 BelleStays Paris
         </a>
 
-        <div class="ms-auto d-flex align-items-center gap-2">
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            {% if user.is_authenticated %}
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNav"
+        >
 
-                <a
-                    href="{% url 'listing_list' %}"
-                    class="btn btn-outline-dark"
-                >
-                    Home
-                </a>
+            <div class="ms-auto d-lg-flex align-items-lg-center gap-2">
 
-                <a
-                    href="{% url 'my_listings' %}"
-                    class="btn btn-outline-primary"
-                >
-                    My Listings
-                </a>
+                {% if user.is_authenticated %}
 
-                <a
-                    href="{% url 'my_bookings' %}"
-                    class="btn btn-outline-primary"
-                >
-                    My Bookings
-                </a>
-
-                <a
-                    href="{% url 'add_listing' %}"
-                    class="btn btn-primary"
-                >
-                    Add Property
-                </a>
-
-                <span class="ms-3 text-muted">
-                    Hello,
-                    <strong>{{ user.username }}</strong>
-                    👋
-                </span>
-
-                <form
-                    method="post"
-                    action="{% url 'logout' %}"
-                    class="d-inline"
-                >
-                    {% csrf_token %}
-
-                    <button
-                        type="submit"
-                        class="btn btn-outline-secondary"
+                    <a
+                        href="{% url 'listing_list' %}"
+                        class="btn btn-outline-dark my-1"
                     >
-                        Logout
-                    </button>
+                        Home
+                    </a>
 
-                </form>
+                    <a
+                        href="{% url 'my_listings' %}"
+                        class="btn btn-outline-primary my-1"
+                    >
+                        My Listings
+                    </a>
 
-            {% else %}
+                    <a
+                        href="{% url 'my_bookings' %}"
+                        class="btn btn-outline-primary my-1"
+                    >
+                        My Bookings
+                    </a>
 
-                <a
-                    href="{% url 'listing_list' %}"
-                    class="btn btn-outline-dark"
-                >
-                    Home
-                </a>
+                    <a
+                        href="{% url 'add_listing' %}"
+                        class="btn btn-primary my-1"
+                    >
+                        Add Property
+                    </a>
 
-                <a
-                    href="{% url 'login' %}"
-                    class="btn btn-outline-primary"
-                >
-                    Login
-                </a>
+                    <span
+                        class="text-muted ms-lg-3 d-block my-2"
+                    >
+                        Hello,
+                        <strong>{{ user.username }}</strong>
+                        👋
+                    </span>
 
-                <a
-                    href="{% url 'signup' %}"
-                    class="btn btn-primary"
-                >
-                    Create Account
-                </a>
+                    <form
+                        method="post"
+                        action="{% url 'logout' %}"
+                        class="d-inline"
+                    >
+                        {% csrf_token %}
 
-            {% endif %}
+                        <button
+                            type="submit"
+                            class="btn btn-outline-secondary my-1"
+                        >
+                            Logout
+                        </button>
+
+                    </form>
+
+                {% else %}
+
+                    <a
+                        href="{% url 'listing_list' %}"
+                        class="btn btn-outline-dark my-1"
+                    >
+                        Home
+                    </a>
+
+                    <a
+                        href="{% url 'login' %}"
+                        class="btn btn-outline-primary my-1"
+                    >
+                        Login
+                    </a>
+
+                    <a
+                        href="{% url 'signup' %}"
+                        class="btn btn-primary my-1"
+                    >
+                        Create Account
+                    </a>
+
+                {% endif %}
+
+            </div>
 
         </div>
 
@@ -123,7 +147,7 @@
 
 </nav>
 
-<div class="container py-5">
+<div class="container py-4">
 
     {% block content %}
     {% endblock %}

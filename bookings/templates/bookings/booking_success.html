@@ -8,11 +8,11 @@ Booking Confirmed
 
 <div class="row justify-content-center">
 
-    <div class="col-lg-8">
+    <div class="col-12 col-md-8 col-lg-6">
 
-        <div class="card shadow">
+        <div class="card shadow border-0">
 
-            <div class="card-body text-center">
+            <div class="card-body text-center p-4">
 
                 <h2 class="text-success mb-4">
                     ✅ Payment Successful!
@@ -26,39 +26,49 @@ Booking Confirmed
 
                 <hr>
 
-                <p>
-                    <strong>Property:</strong><br>
-                    {{ booking.listing.title }}
-                </p>
+                <div class="text-start">
 
-                <p>
-                    <strong>Check-in:</strong><br>
-                    {{ booking.check_in }}
-                </p>
+                    <p>
+                        <strong>Property</strong><br>
+                        {{ booking.listing.title }}
+                    </p>
 
-                <p>
-                    <strong>Check-out:</strong><br>
-                    {{ booking.check_out }}
-                </p>
+                    <p>
+                        <strong>Check-in</strong><br>
+                        {{ booking.check_in }}
+                    </p>
 
-                <p>
-                    <strong>Guests:</strong><br>
-                    {{ booking.guests }}
-                </p>
+                    <p>
+                        <strong>Check-out</strong><br>
+                        {{ booking.check_out }}
+                    </p>
 
-                <p>
-                    <strong>Total Paid:</strong><br>
-                    €{{ booking.total_price }}
-                </p>
+                    <p>
+                        <strong>Guests</strong><br>
+                        {{ booking.guests }}
+                    </p>
+
+                    <p class="mb-0">
+                        <strong>Total Paid</strong><br>
+                        <span class="text-success fw-bold">
+                            €{{ booking.total_price }}
+                        </span>
+                    </p>
+
+                </div>
 
                 {% endif %}
 
-                <a
-                    href="{% url 'my_bookings' %}"
-                    class="btn btn-primary mt-3"
-                >
-                    View My Bookings
-                </a>
+                <div class="d-grid mt-4">
+
+                    <a
+                        href="{% url 'my_bookings' %}"
+                        class="btn btn-primary btn-lg"
+                    >
+                        View My Bookings
+                    </a>
+
+                </div>
 
             </div>
 

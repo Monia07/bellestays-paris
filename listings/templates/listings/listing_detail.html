@@ -6,19 +6,19 @@
 
 {% block content %}
 
-<div class="row">
+<div class="row g-4 align-items-start">
 
-    <div class="col-lg-7">
+    <div class="col-12 col-lg-7">
 
         <img
             src="{{ listing.image }}"
-            class="img-fluid rounded shadow mb-4"
+            class="img-fluid rounded shadow w-100"
             alt="{{ listing.title }}"
         >
 
     </div>
 
-    <div class="col-lg-5">
+    <div class="col-12 col-lg-5">
 
         <h1 class="fw-bold">
             {{ listing.title }}
@@ -64,7 +64,7 @@
 
         </h2>
 
-        <div class="d-flex gap-2">
+        <div class="d-grid gap-2 d-md-flex">
 
             <a
                 href="{% url 'listing_list' %}"

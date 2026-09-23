@@ -8,13 +8,13 @@ Book Property
 
 <div class="row justify-content-center">
 
-    <div class="col-lg-8">
+    <div class="col-12 col-md-10 col-lg-8">
 
-        <div class="card shadow">
+        <div class="card shadow border-0">
 
-            <div class="card-body">
+            <div class="card-body p-4">
 
-                <h2 class="mb-4">
+                <h2 class="text-center mb-4">
                     Book {{ listing.title }}
                 </h2>
 
@@ -22,14 +22,98 @@ Book Property
 
                     {% csrf_token %}
 
-                    {{ form.as_p }}
+                    {% if form.non_field_errors %}
 
-                    <button
-                        type="submit"
-                        class="btn btn-primary"
-                    >
-                        Continue to Payment
-                    </button>
+                        <div class="alert alert-danger">
+
+                            {{ form.non_field_errors }}
+
+                        </div>
+
+                    {% endif %}
+
+                    <div class="mb-3">
+
+                        {{ form.guest_name.label_tag }}
+                        {{ form.guest_name }}
+
+                        {% if form.guest_name.errors %}
+
+                            <div class="text-danger small">
+
+                                {{ form.guest_name.errors }}
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            {{ form.check_in.label_tag }}
+                            {{ form.check_in }}
+
+                            {% if form.check_in.errors %}
+
+                                <div class="text-danger small">
+
+                                    {{ form.check_in.errors }}
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            {{ form.check_out.label_tag }}
+                            {{ form.check_out }}
+
+                            {% if form.check_out.errors %}
+
+                                <div class="text-danger small">
+
+                                    {{ form.check_out.errors }}
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        {{ form.guests.label_tag }}
+                        {{ form.guests }}
+
+                        {% if form.guests.errors %}
+
+                            <div class="text-danger small">
+
+                                {{ form.guests.errors }}
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                    <div class="d-grid">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary btn-lg"
+                        >
+                            Continue to Payment
+                        </button>
+
+                    </div>
 
                 </form>
 

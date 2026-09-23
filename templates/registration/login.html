@@ -6,87 +6,96 @@ Login
 
 {% block content %}
 
-<div class="container mt-5">
+<div class="row justify-content-center">
 
-    <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-5">
 
-        <div class="col-md-6 col-lg-5">
+        <div class="card shadow border-0">
 
-            <div class="card shadow">
+            <div class="card-body p-4">
 
-                <div class="card-body p-4">
+                <h2 class="text-center mb-4">
+                    Login
+                </h2>
 
-                    <h2 class="text-center mb-4">
-                        Login
-                    </h2>
+                <form method="post">
 
-                    <form method="post">
+                    {% csrf_token %}
 
-                        {% csrf_token %}
+                    {% if form.non_field_errors %}
 
-                        {% if form.non_field_errors %}
-                            <div class="alert alert-danger">
-                                {{ form.non_field_errors }}
-                            </div>
-                        {% endif %}
+                        <div class="alert alert-danger">
 
-                        <div class="mb-3">
-
-                            <label
-                                for="{{ form.username.id_for_label }}"
-                                class="form-label"
-                            >
-                                Username
-                            </label>
-
-                            <input
-                                type="text"
-                                name="username"
-                                id="{{ form.username.id_for_label }}"
-                                class="form-control"
-                                placeholder="Enter your username"
-                                required
-                            >
+                            {{ form.non_field_errors }}
 
                         </div>
 
-                        <div class="mb-4">
+                    {% endif %}
 
-                            <label
-                                for="{{ form.password.id_for_label }}"
-                                class="form-label"
-                            >
-                                Password
-                            </label>
+                    <div class="mb-3">
 
-                            <input
-                                type="password"
-                                name="password"
-                                id="{{ form.password.id_for_label }}"
-                                class="form-control"
-                                placeholder="Enter your password"
-                                required
-                            >
+                        <label
+                            for="{{ form.username.id_for_label }}"
+                            class="form-label"
+                        >
+                            Username
+                        </label>
 
-                        </div>
+                        <input
+                            type="text"
+                            name="username"
+                            id="{{ form.username.id_for_label }}"
+                            class="form-control"
+                            placeholder="Enter your username"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label
+                            for="{{ form.password.id_for_label }}"
+                            class="form-label"
+                        >
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            name="password"
+                            id="{{ form.password.id_for_label }}"
+                            class="form-control"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="d-grid">
 
                         <button
                             type="submit"
-                            class="btn btn-primary w-100"
+                            class="btn btn-primary btn-lg"
                         >
                             Login
                         </button>
 
-                    </form>
+                    </div>
 
-                    <p class="text-center mt-4 mb-0">
-                        Don't have an account?
-                        <a href="{% url 'signup' %}">
-                            Create one
-                        </a>
-                    </p>
+                </form>
 
-                </div>
+                <hr>
+
+                <p class="text-center mb-0">
+
+                    Don't have an account?
+
+                    <a href="{% url 'signup' %}">
+                        Create one
+                    </a>
+
+                </p>
 
             </div>
 
