@@ -2,6 +2,9 @@
 
 ![Responsive Mockup](documentation/mockup.png)
 
+*Responsive mockup of the BelleStays Paris application displayed across multiple device sizes.*
+
+
 ## Introduction
 
 BelleStays Paris is a full-stack accommodation booking platform inspired by modern accommodation services such as Airbnb. The application allows users to browse accommodation listings, view detailed property information, create bookings and securely complete payments using Stripe Checkout.
@@ -720,7 +723,7 @@ The following tools were used throughout development:
 - Google Chrome DevTools
 - Balsamiq
 - Mermaid
-- ChatGPT
+- Responsive Viewer (Chrome Extension)
 
 ---
 
@@ -1121,13 +1124,15 @@ The application concept was inspired by modern accommodation booking platforms s
 
 ---
 
-## Images
+## Images and Mockup
 
 Property images were sourced from:
 
 - Unsplash
 
 Images are used for educational purposes only.
+
+- Responsive mockup created using the Responsive Viewer Chrome Extension.
 
 ---
 
