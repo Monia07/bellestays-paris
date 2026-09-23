@@ -374,6 +374,8 @@ Each property card includes:
 
 The responsive Bootstrap grid automatically adapts the layout across desktop, tablet and mobile devices.
 
+![Home Page](documentation/screenshots/home.png)
+
 ---
 
 ## Property Details
@@ -391,6 +393,8 @@ Each listing has its own detail page displaying:
 
 Authenticated users can immediately proceed to create a booking.
 
+![Property Details](documentation/screenshots/property-detail.png)
+
 ---
 
 ## Property Management
@@ -404,6 +408,18 @@ Users can:
 - Delete listings they own.
 
 All CRUD actions are immediately reflected within the user interface.
+
+### My Listings
+
+![My Listings](documentation/screenshots/my-listings.png)
+
+### Add Property
+
+![Add Property](documentation/screenshots/add-property.png)
+
+### Delete Property
+
+![Delete Property](documentation/screenshots/delete-property.png)
 
 ---
 
@@ -425,6 +441,14 @@ Authentication is required before users can:
 
 Unauthenticated users can still browse accommodation listings without creating an account.
 
+### Login
+
+![Login](documentation/screenshots/login.png)
+
+### Register
+
+![Register](documentation/screenshots/register.png)
+
 ---
 
 ## Booking System
@@ -443,6 +467,10 @@ The booking form automatically records:
 - Price per night
 
 Guest capacity is automatically limited according to each property's maximum capacity.
+
+### Booking Form
+
+![Booking Form](documentation/screenshots/booking-form.png)
 
 ---
 
@@ -497,6 +525,14 @@ If payment is cancelled:
 - The booking remains unpaid.
 - Users receive clear feedback explaining that the payment was cancelled.
 
+### Stripe Checkout
+
+![Stripe Checkout](documentation/screenshots/stripe-checkout.png)
+
+### Payment Successful
+
+![Payment Success](documentation/screenshots/payment-success.png)
+
 ---
 
 ## My Bookings
@@ -521,6 +557,8 @@ Only unpaid bookings can be cancelled.
 
 Completed bookings remain visible as part of the user's booking history.
 
+![My Bookings](documentation/screenshots/my-bookings.png)
+
 ---
 
 ## Booking Cancellation
@@ -530,6 +568,10 @@ Users can cancel unpaid bookings.
 A confirmation page is displayed before deletion to prevent accidental removal.
 
 Paid bookings cannot be cancelled through the user interface.
+
+### Delete Booking
+
+![Delete Booking](documentation/screenshots/delete-booking.png)
 
 ---
 
