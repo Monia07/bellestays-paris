@@ -131,14 +131,18 @@ Book Property
 
 <script>
 
+/* jshint esversion: 6 */
+
+(function () {
+
+    "use strict";
+
     const checkIn = document.getElementById("id_check_in");
     const checkOut = document.getElementById("id_check_out");
 
-    // Get today's date in YYYY-MM-DD format
     const today = new Date();
     const todayString = today.toLocaleDateString("en-IE");
 
-    // Disable past dates
     checkIn.min = todayString;
     checkOut.min = todayString;
 
@@ -148,7 +152,6 @@ Book Property
             checkIn.value + "T00:00:00"
         );
 
-        // Check-out must be at least one day later
         selectedDate.setDate(
             selectedDate.getDate() + 1
         );
@@ -159,6 +162,8 @@ Book Property
         checkOut.value = nextDay;
 
     });
+
+})();
 
 </script>
 
